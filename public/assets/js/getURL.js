@@ -1,7 +1,10 @@
 function getTinyURL() {
     const ph1 = document.getElementById('ph1');
     const url = ph1.value.trim();
-
+    if (!isValid(url)) {
+    	alert("Not valid url");
+    	return;
+    } 
     const params = {
         full_url: url
     };
@@ -25,4 +28,9 @@ function getTinyURL() {
     .catch(error => {
         console.error('Error creating TinyURL:', error);
     });
+}
+
+function isValid(url) {
+	const urlRegex = /^(https?:\/\/)([\w-]+\.)+[\w-]{2,}(\/[^\s]*)?$/i;
+	return urlRegex.test(url);
 }
