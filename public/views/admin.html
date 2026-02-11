@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smalito Admin</title>
+
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="./assets/images/smalito.png" type="image/png">
+  <script src="../assets/js/admin.js" defer></script>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="./assets/images/smalito.png" />
+    <span>Smalito Admin</span>
+  </div>
+  <button class="logout">Logout</button>
+</header>
+
+<main>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="card">
+      <h3>Total Links</h3>
+      <p id="totalLinks">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Total Clicks</h3>
+      <p id="totalClicks">0</p>
+    </div>
+
+    <div class="card">
+      <h3>Today</h3>
+      <p id="todayClicks">0</p>
+    </div>
+  </section>
+
+  <!-- Search -->
+  <section class="search">
+    <input type="text" id="searchInput" placeholder="Search by code or URL..." />
+  </section>
+
+  <!-- Table -->
+  <section class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Short Code</th>
+          <th>Full URL</th>
+          <th>Clicks</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="linksTable">
+        <!-- JS inserts rows -->
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+</body>
+</html>

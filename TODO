@@ -1,0 +1,20 @@
+ Coding:
+
+ - Add dark/white mode
+ - Add functionality to admin page
+ - Improve UI
+ - Add dark/white mode
+ - Add accounts (google log in option)
+ - Redirect from http -> https
+
+
+ Security:
+
+  - Path reversal
+  - XSS
+  - IDOR
+  - Cryptographic function for code gen
+
+ Random:
+
+  - I can import env with import { env }

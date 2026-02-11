@@ -4,6 +4,7 @@ export async function isAvailable(url: string, env: Env): Promise<boolean> {
 }
 
 export async function cput(small_url: string, url: string, env: Env): Promise<boolean> {
+	console.log("SMALL: ", small_url);
 	const smalito_url = "https://smalito.com/" + small_url;
 	let value = await env.urls.put(smalito_url, url);
 	return true;

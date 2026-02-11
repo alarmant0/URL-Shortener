@@ -13,8 +13,15 @@ export async function handleApiRequest(request: Request, env: Env): Promise<Resp
     if (endpoint == "create") {
         const body = await request.json();
         const { full_url } = body;
-        const shortcode = await createTinyURL(full_url, env);
-        console.log(full_url); 
+        const { custom_code } = body;
+        console.log(body);
+        const shortcode = await createTinyURL(full_url, custom_code, env);
+        if (shortcode === "Error" ) {
+            const options = {
+                status: 409 // change the status
+            };
+            return new Response("Already exists", options);
+        } 
         let tinyurl = "https://smalito.com/" + shortcode;
         return new Response(JSON.stringify({ url : tinyurl}), { headers: {"Content-Type": "application/json"}});
     }
