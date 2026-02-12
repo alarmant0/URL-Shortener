@@ -30,7 +30,7 @@ export default {
     }
     // Code logic
     const code = pathname.slice(1).trim()
-    if (isValidShortCode(code)) {
+    if (isValidShortCode(code) && pathname !== "/signup") { // change this
       const j_obj_raw = await isAvailable(code, env)
       const j_obj = typeof j_obj_raw === "string" ? JSON.parse(j_obj_raw) : j_obj_raw
       const { full_url } = j_obj
@@ -40,9 +40,21 @@ export default {
     }
     //
     // ASSETS LOGIC
-    if (pathname === "/") {
-      pathname = "index.html";
-    } 
+    console.log(pathname)
+    switch("PATH: ", pathname) {
+      case "/": {
+        pathname = "index.html";
+        break;
+      }
+      case "/signup": {
+        console.log("HERE")
+        pathname = "views/signup.html";
+        break;
+      }
+      default: {
+        break;
+      }
+    }
 
     const assetUrl = new URL(pathname, request.url);
 
