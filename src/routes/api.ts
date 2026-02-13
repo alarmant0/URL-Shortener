@@ -1,10 +1,16 @@
 import { createTinyURL } from "../utils/shortener.ts";
 import { verifyTurnstile } from "../utils/verifyTurnstile.ts";
+import { handleGoogleOAuth } from "./googleOAuth.ts";
 
 export async function handleApiRequest(request: Request, env: Env): Promise<Response> {
 
     const url = new URL(request.url);
     const endpoint = url.pathname.split("/")[2];
+    console.log(url)
+    const full_pathname = url.pathname;
+    if (full_pathname === "/api/auth/google") {
+        return handleGoogleOAuth(request, env);
+    }
     if (endpoint == "status") {
         return new Response(
             JSON.stringify({status:"healthy"}), 

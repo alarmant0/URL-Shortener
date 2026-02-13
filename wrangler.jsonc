@@ -4,14 +4,26 @@
 	"main": "src/index.ts",
 	"compatibility_date": "2026-02-05",
 	"preview_urls": false,
-	"ratelimits": [{
-	"name": "RATE_LIMITER",
-	"namespace_id": "167",
-	"simple": {
-		"limit": 10,
-	    "period": 10
-	  }
-	}],
+	"ratelimits": [
+		{
+			"name": "RATE_LIMITER",
+			"namespace_id": "167",
+			"simple": {
+				"limit": 10,
+				"period": 10
+			}
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "users-db",
+			"database_id": "cbe29c7a-2966-4abe-b062-9a083f338b55"
+		}
+	],
+	"vars": {
+		"GOOGLE_CLIENT_ID": "965314062049-gu023p97ugacvn4sdvbsk8tisbr0a8r2.apps.googleusercontent.com"
+	},
 	"assets": {
 		"directory": "./public/",
 		"binding": "ASSETS",

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smalito – Dashboard</title>
+
+  <link rel="stylesheet" href="./assets/css/dashboard.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="./assets/images/smalito.png" type="image/png">
+</head>
+
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <a class="logo" href="/">
+      <img src="./assets/images/smalito.png" alt="Smalito">
+      <span>Smalito</span>
+    </a>
+
+    <nav class="nav">
+      <a class="navlink active" href="/dashboard">Dashboard</a>
+      <a class="navlink" href="/">Shortener</a>
+      <a class="navlink" href="/signup">Account</a>
+    </nav>
+
+    <div class="actions">
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button class="btn ghost" id="logoutBtn" type="button">Log out</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Dashboard</h1>
+        <p class="subtitle">Manage your links, view clicks, and create new short URLs in seconds.</p>
+
+        <div class="quick">
+          <div class="card quick-card">
+            <div class="card-title">Quick create</div>
+
+            <form id="createForm" class="quick-form">
+              <div class="field">
+                <label for="longUrl">Long URL</label>
+                <input id="longUrl" type="url" placeholder="https://example.com/very/long/link" required />
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label for="code">Custom code</label>
+                  <input id="code" type="text" placeholder="myLink" maxlength="8" />
+                  <div class="hint">Optional • up to 8 letters/numbers</div>
+                </div>
+
+                <div class="field">
+                  <label for="domain">Domain</label>
+                  <select id="domain">
+                    <option value="smalito">smalito…</option>
+                    <option value="custom" disabled>Custom domains (soon)</option>
+                  </select>
+                  <div class="hint">More domains soon</div>
+                </div>
+              </div>
+
+              <button class="btn primary" type="submit" id="createBtn">Create link</button>
+
+              <div class="result" id="createResult">
+                <input id="createdUrl" readonly />
+                <button type="button" class="btn mini" id="copyBtn">Copy</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="stats">
+            <div class="card stat">
+              <div class="stat-top">
+                <div class="stat-label">Links</div>
+                <div class="stat-chip">Total</div>
+              </div>
+              <div class="stat-value" id="statLinks">12</div>
+              <div class="stat-sub">+2 this week</div>
+            </div>
+
+            <div class="card stat">
+              <div class="stat-top">
+                <div class="stat-label">Clicks</div>
+                <div class="stat-chip">7d</div>
+              </div>
+              <div class="stat-value" id="statClicks">1,248</div>
+              <div class="stat-sub">Peak: 312/day</div>
+            </div>
+
+            <div class="card stat">
+              <div class="stat-top">
+                <div class="stat-label">Top link</div>
+                <div class="stat-chip">Today</div>
+              </div>
+              <div class="stat-value small">/creator</div>
+              <div class="stat-sub">142 clicks</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card panel">
+          <div class="panel-head">
+            <div class="panel-title">Activity</div>
+            <div class="panel-actions">
+              <button class="btn mini ghost" type="button">Export</button>
+              <button class="btn mini" type="button">Refresh</button>
+            </div>
+          </div>
+
+          <div class="chart">
+            <div class="bars">
+              <span style="height: 20%"></span>
+              <span style="height: 35%"></span>
+              <span style="height: 52%"></span>
+              <span style="height: 44%"></span>
+              <span style="height: 70%"></span>
+              <span style="height: 58%"></span>
+              <span style="height: 76%"></span>
+              <span style="height: 62%"></span>
+              <span style="height: 48%"></span>
+              <span style="height: 32%"></span>
+              <span style="height: 40%"></span>
+              <span style="height: 55%"></span>
+            </div>
+            <div class="chart-foot">
+              <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+            </div>
+          </div>
+
+          <div class="panel-foot">
+            <div class="pill">
+              <span class="dot"></span>
+              <span>Clicks trend: up 18%</span>
+            </div>
+
+            <div class="pill ghost">
+              <span>Last updated: just now</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card panel mini-panel">
+            <div class="panel-title">Branded links</div>
+            <p class="muted">Use your own domain for higher trust and better conversions.</p>
+            <button class="btn primary" type="button">Upgrade</button>
+          </div>
+
+          <div class="card panel mini-panel">
+            <div class="panel-title">Smart routing</div>
+            <p class="muted">Route users by device, country, or UTM — coming soon.</p>
+            <button class="btn" type="button">Join waitlist</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="table-wrap">
+      <div class="table-head">
+        <div>
+          <h2>Your links</h2>
+          <p class="muted">Search, copy, and track performance.</p>
+        </div>
+
+        <div class="table-actions">
+          <div class="search">
+            <input id="search" placeholder="Search short code or destination..." />
+          </div>
+          <select id="filter">
+            <option value="all">All links</option>
+            <option value="7d">Last 7 days</option>
+            <option value="30d">Last 30 days</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card table-card">
+        <div class="table">
+          <div class="thead">
+            <div>Short</div>
+            <div>Destination</div>
+            <div>Clicks</div>
+            <div>Created</div>
+            <div></div>
+          </div>
+
+          <div class="trow">
+            <div class="mono">/creator</div>
+            <div class="truncate">https://example.com/landing/creator</div>
+            <div>1,204</div>
+            <div>Feb 10</div>
+            <div class="row-actions">
+              <button class="btn mini" type="button">Copy</button>
+              <button class="btn mini ghost" type="button">Details</button>
+            </div>
+          </div>
+
+          <div class="trow">
+            <div class="mono">/bio</div>
+            <div class="truncate">https://example.com/profile</div>
+            <div>312</div>
+            <div>Feb 08</div>
+            <div class="row-actions">
+              <button class="btn mini" type="button">Copy</button>
+              <button class="btn mini ghost" type="button">Details</button>
+            </div>
+          </div>
+
+          <div class="trow">
+            <div class="mono">/promo</div>
+            <div class="truncate">https://example.com/sale?utm_source=ig</div>
+            <div>99</div>
+            <div>Feb 02</div>
+            <div class="row-actions">
+              <button class="btn mini" type="button">Copy</button>
+              <button class="btn mini ghost" type="button">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-foot">
+          <span class="muted">Showing 3 links</span>
+          <div class="pager">
+            <button class="btn mini ghost" type="button">Prev</button>
+            <button class="btn mini" type="button">Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">© 2026 Smalito. Built with simplicity.</footer>
+  </main>
+
+  <script>
+    (function () {
+      const themeBtn = document.getElementById("themeToggle");
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.body.classList.add("dark-mode");
+      }
+      themeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+        themeBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+      });
+
+      const form = document.getElementById("createForm");
+      const result = document.getElementById("createResult");
+      const createdUrl = document.getElementById("createdUrl");
+      const copyBtn = document.getElementById("copyBtn");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const longUrl = document.getElementById("longUrl").value.trim();
+        const code = document.getElementById("code").value.trim();
+        const btn = document.getElementById("createBtn");
+        btn.disabled = true;
+        btn.textContent = "Creating...";
+
+        try {
+          // Replace with your real endpoint later
+          // const res = await fetch("/api/create", { ... })
+          const fakeShort = "/demo" + Math.floor(Math.random() * 1000);
+          const out = window.location.origin + fakeShort;
+
+          createdUrl.value = out;
+          result.classList.add("show");
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Create link";
+        }
+      });
+
+      copyBtn.addEventListener("click", async () => {
+        if (!createdUrl.value) return;
+        await navigator.clipboard.writeText(createdUrl.value);
+        copyBtn.textContent = "Copied";
+        setTimeout(() => (copyBtn.textContent = "Copy"), 900);
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        // later: call /api/auth/logout then redirect
+        alert("Hook logout to your API (clear session cookie).");
+      });
+    })();
+  </script>
+</body>
+</html>

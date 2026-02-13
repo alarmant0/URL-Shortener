@@ -40,17 +40,19 @@ export default {
     }
     //
     // ASSETS LOGIC
-    console.log(pathname)
     switch("PATH: ", pathname) {
       case "/": {
         pathname = "index.html";
         break;
       }
       case "/signup": {
-        console.log("HERE")
         pathname = "views/signup.html";
         break;
       }
+    case "/dashboard": {
+      pathname = "views/dashboard.html";
+      break;
+    }
       default: {
         break;
       }

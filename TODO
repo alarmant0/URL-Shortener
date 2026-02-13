@@ -1,14 +1,12 @@
  Coding:
 
- - Delete links
- - Clean code
- // ATE HOJE
  - Add accounts (google log in option)
+ // ATE HOJE
+ - Create js files for dashboard and signup
+ - Clean code
  - Add Ads to the site
  - Remove hardcoded secrets
- - Clean code
- - Get all links
-
+ - Maybe implementar um R2
 
  Security:
 
